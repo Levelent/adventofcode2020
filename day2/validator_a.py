@@ -1,7 +1,7 @@
 with open("input.txt") as file:
     lines = file.read().split("\n")
-    print(lines)
 
+# Split by spaces, then by symbols to extract the variables.
 valid_count = 0
 for line in lines:
     num_range, char, password = line.split()
