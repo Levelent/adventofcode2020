@@ -1,6 +1,5 @@
 with open("input.txt") as file:
     lines = file.read().split("\n")
-    print(lines)
 
 valid_count = 0
 for line in lines:
@@ -9,6 +8,7 @@ for line in lines:
     start = int(s) - 1
     end = int(e) - 1
     target = char[0]
-    valid_count += bool(password[start] == target) ^ bool(password[end] == target)
+    # XOR operator is logical on boolean inputs
+    valid_count += (password[start] == target) ^ (password[end] == target)
 print(valid_count)
 
