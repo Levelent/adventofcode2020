@@ -12,7 +12,6 @@ for passport in passports:
         pairs[key] = value
     passports_pairs.append(pairs)
 del passports
-print(passports_pairs)
 
 fields = ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"]
 
