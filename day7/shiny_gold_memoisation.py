@@ -17,8 +17,13 @@ for line in text:
             contains.append((name, num))
     bag_structure[bag_name] = contains
 
+has_gold_mem = {}
+bags_in_bag_mem = {}
+
 
 def has_gold_bag(b_name):
+    if b_name in has_gold_mem:
+        return has_gold_mem[b_name]
     bs = bag_structure[b_name]
     if len(bs) == 0:
         return False
@@ -26,30 +31,34 @@ def has_gold_bag(b_name):
         if b[0] == "shiny gold":
             return True
     for b in bs:
-        if has_gold_bag(b[0]):
+        if b[0] not in has_gold_mem:
+            check = has_gold_bag(b[0])
+        else:
+            check = has_gold_mem[b[0]]
+        if check:
             return True
     return False
 
 
 def bags_in_bag(b_name: str):
+    if b_name in bags_in_bag_mem:
+        return bags_in_bag_mem[b_name]
     bs = bag_structure[b_name]
     if len(bs) == 0:
         return 0
     b_total = 0
     for b in bs:
-        b_total += b[1] + b[1] * bags_in_bag(b[0])
+        if b[0] not in bags_in_bag_mem:
+            n_in_bag = bags_in_bag(b[0])
+        else:
+            n_in_bag = bags_in_bag_mem[b[0]]
+        b_total += b[1] + b[1] * n_in_bag
     return b_total
 
 
-start = timeit.default_timer()
 num_containing_gold = 0
 for bag in bag_structure.keys():
     num_containing_gold += has_gold_bag(bag)
 print(num_containing_gold)
-end = timeit.default_timer()
-print(end - start)
 
-start = timeit.default_timer()
 print(bags_in_bag("shiny gold"))
-end = timeit.default_timer()
-print(end - start)
