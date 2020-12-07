@@ -1,5 +1,3 @@
-import timeit
-
 with open("input.txt") as file:
     text = file.read().split("\n")
 
@@ -41,15 +39,9 @@ def bags_in_bag(b_name: str):
     return b_total
 
 
-start = timeit.default_timer()
 num_containing_gold = 0
 for bag in bag_structure.keys():
     num_containing_gold += has_gold_bag(bag)
 print(num_containing_gold)
-end = timeit.default_timer()
-print(end - start)
 
-start = timeit.default_timer()
 print(bags_in_bag("shiny gold"))
-end = timeit.default_timer()
-print(end - start)

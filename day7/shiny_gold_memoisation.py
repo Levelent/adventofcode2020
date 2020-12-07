@@ -1,5 +1,3 @@
-import timeit
-
 with open("input.txt") as file:
     text = file.read().split("\n")
 
