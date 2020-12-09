@@ -54,7 +54,6 @@ for v in visited:
     if instructions[v][0] == "acc":
         continue
     instructions[v][0] = flip_code(instructions[v][0])
-    print(f"Changed Instruction {v}")
     terminated, acc_val = run(instructions)
     if terminated:
         print(terminated, acc_val)
