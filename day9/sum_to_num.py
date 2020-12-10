@@ -11,3 +11,4 @@ for length in range(2, idx):
         sublist = nums[i:i+length]
         if sum(sublist) == sum_to:
             print(min(sublist) + max(sublist))
+            break
