@@ -27,5 +27,4 @@ for direct in directions:
         s_north += (w_north * value)
 
 print(abs(s_north) + abs(s_east))
-# 1225 too low
 
